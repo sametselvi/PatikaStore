@@ -1,48 +1,28 @@
 
-import generics.MyList;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.*;
 
 public class Main {
 
     public static void main(String[] args) {
-        MyList<Integer> liste = new MyList<>();
+        OrderByTotalPageComparator orderByTotalPageComparator= new OrderByTotalPageComparator();
+        OrderByNameComparator orderByNameComparator = new OrderByNameComparator();
+        TreeSet<Book> bookTreeSet = new TreeSet<>(orderByTotalPageComparator);
+       // TreeSet<Book> bookTreeSet = new TreeSet<>(orderByNameComparator);
 
 
+        bookTreeSet.add(new Book("Tutunamayanlar", 650, "Oğuz Atay", "26.05.1997"));
+        bookTreeSet.add(new Book("Kiralık Konak", 232, "Oğuz Atay", "1922"));
+        bookTreeSet.add(new Book("Yaprak Dökümü", 160, "Reşat Nuri Güntekin", "1930"));
+        bookTreeSet.add(new Book("Kürk Mantolu Madonna", 159, "Reşat Nuri Güntekin", "1943 "));
+        bookTreeSet.add(new Book("Amok Koşucusu", 60 ,"Stefan Zweig", "1922"));
 
-        liste.add(10);
-        liste.add(20);
-        liste.add(30);
-        liste.add(40);
-        liste.add(30);
-        liste.add(30);
-        liste.add(40);
+        for (Book a : bookTreeSet
+        ) {
+            System.out.println(a.getName());
+        }
 
-
-
-
-        System.out.println("Array : " + liste.toString());
-
-        System.out.println("İndeksof : " + liste.indexOf(30));
-
-
-        System.out.println("lastındex" + liste.lastIndexOf(40));
-
-
-
-
-
-        Object[] dizi = liste.toArray();
-        System.out.println("capasite" + liste.getCapacity());
-        System.out.println("Object dizisinin ilk elemanı :" + dizi[4]);
-
-        MyList<Integer> altListem =  liste.subList(0, 2);
-
-        System.out.println(altListem.toString());
-        System.out.println("Listemde 20 değeri : " + liste.contains(20));
-        System.out.println("Listemde 120 değeri : " + liste.contains(120));
-        System.out.println("Array : " + liste.toString());
 
     }
+
 }
